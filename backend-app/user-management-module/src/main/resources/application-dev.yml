@@ -1,0 +1,24 @@
+# Database configuration
+spring:
+  datasource:
+    url: ${{spring.datasource.url}}
+    username: ${{spring.datasource.username}}
+    password: ${{spring.datasource.password}}
+  jpa:
+    hibernate:
+      ddl-auto: ${{spring.jpa.hibernate.ddl-auto}}
+
+#Display Application warn, errors and info
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: ${{logging.level.org.hibernate.SQL}}
+        Type: ${{logging.level.org.hibernate.Type}}
+      springframework:
+        security:
+          web: ${{logging.level.org.springframework.security.web}}
+
+# Server configuration
+server:
+  port: ${{server.port}}

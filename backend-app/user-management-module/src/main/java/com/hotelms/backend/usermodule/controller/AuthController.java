@@ -1,0 +1,27 @@
+package com.hotelms.backend.usermodule.controller;
+
+import com.hotelms.backend.usermodule.dto.LoginDTO;
+import com.hotelms.backend.usermodule.dto.RegistrationDTO;
+import com.hotelms.backend.usermodule.dto.ResponseDTO;
+import com.hotelms.backend.usermodule.service.AuthService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+@CrossOrigin
+@RestController
+@RequestMapping(path = "/auth")
+public class AuthController {
+
+    @Autowired
+    private AuthService authService;
+
+    @PostMapping("/signup")
+    public ResponseDTO signupUser(@RequestBody RegistrationDTO request) {
+        return authService.signupUser(request);
+    }
+
+    @PostMapping("/login")
+    public ResponseDTO loginUser(@RequestBody LoginDTO loginReq) {
+        return authService.loginUser(loginReq);
+    }
+}
