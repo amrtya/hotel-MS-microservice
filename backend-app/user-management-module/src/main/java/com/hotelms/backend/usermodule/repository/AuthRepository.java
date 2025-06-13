@@ -13,4 +13,6 @@ public interface AuthRepository extends JpaRepository<UserModel, String> {
     Optional<UserModel> findByEmailAndMobile(String email, String mobile);
 
     Optional<UserModel> findByEmail(String email);
+
+    Optional<UserModel> findByMobileNo(String mobile);
 }

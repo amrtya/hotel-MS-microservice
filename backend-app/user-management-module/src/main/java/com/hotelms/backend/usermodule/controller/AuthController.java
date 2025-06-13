@@ -1,8 +1,7 @@
 package com.hotelms.backend.usermodule.controller;
 
-import com.hotelms.backend.usermodule.dto.LoginDTO;
-import com.hotelms.backend.usermodule.dto.RegistrationDTO;
-import com.hotelms.backend.usermodule.dto.ResponseDTO;
+import com.hotelms.backend.usermodule.dto.*;
+import com.hotelms.backend.usermodule.model.UserModel;
 import com.hotelms.backend.usermodule.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -23,5 +22,15 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseDTO loginUser(@RequestBody LoginDTO loginReq) {
         return authService.loginUser(loginReq);
+    }
+
+    @GetMapping("/getuserdetails")
+    public SingleResponseDTO<UserModel> getUserByMobileNumber(@RequestParam("mobile") String mobileNumber) {
+        return authService.getUserDetails(mobileNumber);
+    }
+
+    @PostMapping("/updateuserdetails")
+    public ResponseDTO updateUserDetails(@RequestBody UpdateUserDTO request) {
+        return authService.updateUserDetails(request);
     }
 }
