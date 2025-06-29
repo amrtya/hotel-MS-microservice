@@ -49,4 +49,20 @@ public class RoomService {
 
         return new ResponseDTO(ResponseType.SUCCESS.name(), "Room added successfully");
     }
+
+    public ResponseDTO removeRoom(String roomId) {
+        Optional<RoomModel> roomById = roomRepository.findByRoomId(roomId);
+        if(roomById.isEmpty()) {
+            throw new BusinessException("No room exists with this ID");
+        }
+
+        try {
+            roomRepository.deleteById(roomId);
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            throw new TechnicalException("Error while removing room with ID: " + roomId);
+        }
+
+        return new ResponseDTO(ResponseType.SUCCESS.name(), "Room removed successfully");
+    }
 }

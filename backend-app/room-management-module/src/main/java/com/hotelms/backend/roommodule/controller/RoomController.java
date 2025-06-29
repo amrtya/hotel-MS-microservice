@@ -14,8 +14,13 @@ public class RoomController {
     @Autowired
     private RoomService roomService;
 
-    @PostMapping("/addroom")
+    @PostMapping("/add")
     public ResponseDTO addRoom(@RequestBody AddRoomDTO request) {
         return roomService.addRoom(request);
+    }
+
+    @DeleteMapping("/remove")
+    public ResponseDTO removeRoom(@RequestParam("roomId") String roomId) {
+        return roomService.removeRoom(roomId);
     }
 }
