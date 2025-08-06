@@ -1,7 +1,8 @@
 package com.hotelms.backend.roommodule.util;
 
 public enum RoomStatus {
-    VACANT,
+    AVAILABLE,
     OCCUPIED,
-    UNDER_MAINTENANCE
+    MAINTENANCE,
+    RESERVED
 }
